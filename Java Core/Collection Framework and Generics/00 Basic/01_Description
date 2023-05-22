@@ -1,0 +1,67 @@
+**************************************** COLLECTIONS ********************************************
+-------------------------------------------------------------------------------------------------
+Any group of individual objects which are represented as a single unit is known as the collection 
+of the objects. In Java, a separate framework named the “Collection Framework” has been defined in 
+JDK 1.2 which holds all the collection classes and interface in it. 
+
+The Collection interface (java.util.Collection) and Map interface (java.util.Map) are the two 
+main “root” interfaces of Java collection classes.
+
+
+What is a Framework?
+-------------------------
+A framework is a set of classes and interfaces which provide a ready-made architecture. In order 
+to implement a new feature or a class, there is no need to define a framework. However, an optimal 
+object-oriented design always includes a framework with a collection of classes such that all the 
+classes perform the same kind of task. 
+
+
+
+
+
+Advantages Of Collection Framework.
+------------------------------------
+
+Consistent API: 
+       The API has a basic set of interfaces like Collection, Set, List, or Map, all the classes 
+       (ArrayList, LinkedList, Vector, etc) that implement these interfaces have some common set 
+       of methods.
+     
+Reduces programming effort: 
+        A programmer doesn’t have to worry about the design of the Collection but rather he can 
+        focus on its best use in his program. Therefore, the basic concept of Object-oriented 
+        programming (i.e.) abstraction has been successfully implemented.
+ 
+Increases program speed and quality: 
+        Increases performance by providing high-performance implementations of useful data 
+        structures and algorithms because in this case, the programmer need not think of the best 
+        implementation of a specific data structure. He can simply use the best implementation to 
+        drastically boost the performance of his algorithm/program.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HASHING
+--------------
+00. Hashing is a technique to quickly find, add, and remove
+    elements from a collection.
+00. Example, directory of words
+00. Hashing stores the data in such a way that retrieval of
+    data is fast. It uses a function(hash function) to create an
+    index(hash code) and this index is used to narrow down
+    the search.
+00. These indexes are maintained in a hash table.
+00. The hash table is quickly an array of linked list.

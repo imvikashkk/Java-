@@ -1,0 +1,185 @@
+********************************************** GENERICS *******************************************
+---------------------------------------------------------------------------------------------------
+
+01. The Java Generics programming is introduced in J2SE 5 to deal with type-safe objects.
+    It makes the code stable by detecting the bugs at compile time.
+
+02. Before generics, we can store any type of objects in the collection, i.e., non-generic. Now
+    generics force the java programmer to store a specific type of objects
+
+03. Primitie datatypes cannot be used to represent Generics types, only class types are allowed.
+
+04. Better than using Object as using Object can make the code vulnerable to type mismatch errors.
+
+ADVANTAGES OF GENERICS :-
+--------------------------
+
+There are mainly 3 advantages of generics. They are as follows:
+
+1) Type-safety: 
+         We can hold only a single type of objects in generics. It doesn?t allow to store 
+         other objects.
+
+   Without Generics, We can store any type of objects :
+     >> List list = new ArrayList();
+     >> list.add(10);
+     >> list.add("10");
+
+   With Generics, it is required to specify the type of object we need to store.
+     >> List<Integer> list = new ArrayList<Integer>();
+     >> list.add(10);
+     >> list.add("10");// compile-time error
+
+2) Type casting is not required: 
+        There is no need to typecast the object.
+
+  Before Generics, we need to type cast.
+     >> List list = new ArrayList();
+     >> list.add("hello");
+     >> String s = (String)list.get(0);//typecasting
+
+  After Generics, we don't need to typecast the object.
+     >> List<String> list = new ArrayList<String>();
+     >> list.add("hello");
+     >> String s = list.get(0);
+
+3) Compile-Time Checking: 
+        It is checked at compile time so problem will not occur at runtime. The good programming 
+        strategy says it is far better to handle the problem at compile time than runtime.
+
+     >> List<String> list = new ArrayList<String>();
+     >> list.add("hello");
+     >> list.add(32);//Compile Time Error
+
+
+****************************************** GENERIC CLASS ***************************************
+------------------------------------------------------------------------------------------------
+
+A class that can refer to any type is known as a generic class. Here, we are using the T
+type parameter to create the generic class of specific type.
+Let's see a simple example to create and use the generic class.
+
+Creating a generic class:
+  >> class MyGen<T>{
+  >> T obj;
+  >> void add(T obj){this.obj=obj;}
+  >> T get(){return obj;}
+  >> }
+
+The T type indicates that it can refer to any type (like String, Integer, and Employee). The
+type you specify for the class will be used to store and retrieve the data.
+Using generic class:
+
+Let's see the code to use the generic class.
+  >> class TestGenerics3{
+  >> public static void main(String args[]){
+  >> MyGen<Integer> m=new MyGen<Integer>();
+  >> m.add(2);
+  >> //m.add("vivek");//Compile time error
+  >> System.out.println(m.get());
+  >> }}
+
+
+00. Type Parameters
+----------------------
+The type parameters naming conventions are important to learn generics thoroughly.
+The common type parameters are as follows:
+     T - Type
+     E - Element
+     K - Key
+     N - Number 
+     V - Value
+
+
+********************************************* GENERIC METHOD *************************************
+--------------------------------------------------------------------------------------------------
+
+Like the generic class, we can create a generic method that can accept any type of
+arguments. Here, the scope of arguments is limited to the method where it is declared.
+It allows static as well as non-static methods.
+Let's see a simple example of java generic method to print array elements. We are using
+here E to denote the element.
+
+      >> public class TestGenerics4{
+      >>      public static < E > void printArray(E[] elements) {
+      >>             for ( E element : elements){
+      >>                     System.out.println(element );
+      >>             }
+      >>             System.out.println();
+      >>      }
+
+      >>      public static void main( String args[] ) {
+      >>             Integer[] intArray = { 10, 20, 30, 40, 50 };
+      >>             Character[] charArray = { 'J', 'A', 'V', 'A', 'T','P','O','I','N','T' };
+      >>
+      >>             System.out.println( "Printing Integer Array" );
+      >>             printArray( intArray );
+      >>
+      >>             System.out.println( "Printing Character Array" );
+      >>             printArray( charArray );
+      >>      }
+      >> }
+
+
+*********************************** WILDCARD IN JAVA GENERICS ***********************************
+--------------------------------------------------------------------------------------------------
+The ? (question mark) symbol represents the wildcard element. It means any type. If we
+write <? extends Number>, it means any child class of Number, e.g., Integer, Float, and
+double. Now we can call the method of Number class through any child class object.
+We can use a wildcard as a type of a parameter, field, return type, or local variable.
+However, it is not allowed to use a wildcard as a type argument for a generic
+method invocation, a generic class instance creation, or a supertype.
+
+Let's understand it by the example given below:
+  >>      import java.util.*;
+
+  >>      abstract class Shape{
+  >>          abstract void draw();
+  >>      }
+
+  >>      class Rectangle extends Shape{
+  >>          void draw(){System.out.println("drawing rectangle");}
+  >>      }
+
+  >>      class Circle extends Shape{
+  >>          void draw(){System.out.println("drawing circle");}
+  >>      }
+
+  >>      class GenericTest{
+  >>          //creating a method that accepts only child class of Shape
+  >>          public static void drawShapes(List<? extends Shape> lists){
+  >>             for(Shape s:lists){
+  >>                 s.draw();//calling method of Shape class by child class instance
+  >>             }
+  >>      }
+
+  >>      public static void main(String args[]){
+  >>            List<Rectangle> list1=new ArrayList<Rectangle>();
+  >>            list1.add(new Rectangle());
+  >>     
+  >>            List<Circle> list2=new ArrayList<Circle>();
+  >>            list2.add(new Circle());
+  >>            list2.add(new Circle());
+  >>     
+  >>            drawShapes(list1);
+  >>            drawShapes(list2);
+  >>      }}
+
+
+
+  There are Three Types Of WildCards :-
+  1. _02_UpperBoundWildCards
+  2. _03_UnBoundedWildCards
+  3. _04_LowerBoundWildCards
+
+
+
+
+
+
+
+
+
+
+
+
